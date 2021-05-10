@@ -67,31 +67,42 @@ const Header = (props) => {
       ) : (
         <>
           <NavMenu>
-            <a href="/home">
+            {/* <a href="/home">
               <img src="/images/home-icon.svg" alt="HOME" />
               <span>HOME</span>
-            </a>
-            <a>
+            </a> */}
+            {/* <a>
               <img src="/images/search-icon.svg" alt="SEARCH" />
               <span>SEARCH</span>
-            </a>
+            </a> */}
             <a>
-              <img src="/images/watchlist-icon.svg" alt="WATCHLIST" />
-              <span>WATCHLIST</span>
-            </a>
-            <a>
-              <img src="/images/original-icon.svg" alt="ORIGINALS" />
-              <span>ORIGINALS</span>
+              <img src="/images/series-icon.svg" alt="SERIES" />
+              <span>Series</span>
             </a>
             <a>
               <img src="/images/movie-icon.svg" alt="MOVIES" />
-              <span>MOVIES</span>
+              <span>Movies</span>
             </a>
             <a>
-              <img src="/images/series-icon.svg" alt="SERIES" />
-              <span>SERIES</span>
+              <img src="/images/watchlist-icon.svg" alt="WATCHLIST" />
+              <span>Watchlist</span>
+            </a>
+            <a>
+              <img src="/images/original-icon.svg" alt="ORIGINALS" />
+              <span>Originals</span>
             </a>
           </NavMenu>
+          <Search>
+            <input
+              type="text"
+              name="search"
+              placeholder="Search"
+              autoComplete="off"
+            ></input>
+            <div className="searchIcon">
+              <img src="/images/search-icon.svg" alt="SEARCH" />
+            </div>
+          </Search>
           <SignOut>
             <UserImg src={userPhoto} alt={userName} />
             <DropDown>
@@ -110,7 +121,7 @@ const Nav = styled.nav`
   left: 0;
   right: 0;
   height: 70px;
-  background-color: #090b13;
+  background-color: #121926;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -199,6 +210,36 @@ const NavMenu = styled.div`
   }
 `;
 
+const Search = styled.div`
+  input {
+    position: relative;
+    width: 240px;
+    height: 32px;
+    font-size: 16px;
+    transition: width 0.2s ease-in-out;
+    margin-right: 20px;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    background: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+
+    &:focus {
+      width: 360px;
+      border-bottom: 1px solid #1f80e0;
+      outline: none;
+    }
+  }
+  .searchIcon {
+    position: absolute;
+    width: 16px;
+    top: 25px;
+    right: 105px;
+    img {
+      width: 100%;
+    }
+  }
+`;
+
 const Login = styled.a`
   background-color: rgba(0, 0, 0, 0.6);
   padding: 8px 16px;
@@ -246,8 +287,8 @@ const SignOut = styled.div`
 
   ${UserImg} {
     border-radius: 50%;
-    width: 100%;
-    height: 100%;
+    width: 38px;
+    height: 38px;
   }
 
   &:hover {
