@@ -41,9 +41,11 @@ const NowPlaying = (props) => {
 };
 
 const Container = styled.div`
-  padding: 0 0 26px;
+  padding: 0 0 16px;
   h4 {
     font-size: 20px;
+    margin: 0;
+    padding: 10px 0;
   }
 `;
 
@@ -64,6 +66,13 @@ const Content = styled(Slider)`
 
   .slick-list {
     overflow: initial;
+  }
+
+  .slick-slide {
+    padding-right: 5px;
+    &:not(:first-child) {
+      padding-left: 5px;
+    }
   }
 
   .slick-arrow {
@@ -114,8 +123,6 @@ const Wrap = styled.div`
   border-radius: 7px;
   cursor: pointer;
   transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
-
-  padding: 0 5px;
   z-index: 1;
 
   img {

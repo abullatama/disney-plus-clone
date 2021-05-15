@@ -2,14 +2,14 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectUpComing } from "../features/movie/movieSlice";
+import { selectPopular } from "../features/movie/movieSlice";
 import CONFIG from "../globals/config";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
-const ComingSoon = (props) => {
-  const movies = useSelector(selectUpComing);
+const Popular = (props) => {
+  const movies = useSelector(selectPopular);
   let settings = {
     dots: false,
     infinite: false,
@@ -22,7 +22,7 @@ const ComingSoon = (props) => {
 
   return (
     <Container>
-      <h4>Coming Soon</h4>
+      <h4>Popular Movies</h4>
       <Content {...settings}>
         {movies &&
           movies[0].map((movie, key) => (
@@ -141,4 +141,4 @@ const Wrap = styled.div`
   }
 `;
 
-export default ComingSoon;
+export default Popular;

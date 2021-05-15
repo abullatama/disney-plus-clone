@@ -4,7 +4,8 @@ import ComingSoon from "./ComingSoon";
 import NowPlaying from "./NowPlaying";
 import ImgSlider from "./ImgSlider";
 import Viewers from "./Viewers";
-import Originals from "./Originals";
+import Popular from "./Popular";
+import TopRated from "./TopRated";
 import { useDispatch, useSelector } from "react-redux";
 import { setMovies } from "../features/movie/movieSlice";
 import { selectUserName } from "../features/user/userSlice";
@@ -15,14 +16,20 @@ const Home = (props) => {
   const dispatch = useDispatch();
   let nowPlaying = [];
   let upComing = [];
+  let popular = [];
+  let topRated = [];
 
   useEffect(async () => {
     nowPlaying.push(await TheMovieDbSource.nowPlayingMovies());
     upComing.push(await TheMovieDbSource.upcomingMovies());
+    popular.push(await TheMovieDbSource.popularMovies());
+    topRated.push(await TheMovieDbSource.topRatedMovies());
     dispatch(
       setMovies({
         nowPlaying: nowPlaying,
         upComing: upComing,
+        popular: popular,
+        topRated: topRated,
       })
     );
   }, [userName]);
@@ -32,8 +39,9 @@ const Home = (props) => {
       <ImgSlider />
       <Viewers />
       <NowPlaying />
+      <Popular />
       <ComingSoon />
-      <Originals />
+      <TopRated />
     </Container>
   );
 };
@@ -45,11 +53,8 @@ const Container = styled.main`
   display: block;
   top: 70px;
   padding: 0 calc(3.5vw + 5px);
-  background: linear-gradient(
-    180deg,
-    rgba(18, 25, 38, 1) 12%,
-    rgba(0, 0, 0, 1) 100%
-  );
+  background: linear-gradient(to bottom, #141b29, #0c111b 300px);
+  padding-bottom: 45px;
 
   &:after {
     content: "";

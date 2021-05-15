@@ -67,14 +67,6 @@ const Header = (props) => {
       ) : (
         <>
           <NavMenu>
-            {/* <a href="/home">
-              <img src="/images/home-icon.svg" alt="HOME" />
-              <span>HOME</span>
-            </a> */}
-            {/* <a>
-              <img src="/images/search-icon.svg" alt="SEARCH" />
-              <span>SEARCH</span>
-            </a> */}
             <a>
               <img src="/images/series-icon.svg" alt="SERIES" />
               <span>Series</span>
@@ -121,7 +113,7 @@ const Nav = styled.nav`
   left: 0;
   right: 0;
   height: 70px;
-  background-color: #121926;
+  background-color: #141b29;
   display: flex;
   justify-content: space-between;
   align-items: center;
