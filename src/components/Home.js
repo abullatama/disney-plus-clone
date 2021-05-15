@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import styled from "styled-components";
-import NewDisney from "./NewDisney";
+import ComingSoon from "./ComingSoon";
 import NowPlaying from "./NowPlaying";
 import ImgSlider from "./ImgSlider";
 import Viewers from "./Viewers";
@@ -32,7 +32,7 @@ const Home = (props) => {
       <ImgSlider />
       <Viewers />
       <NowPlaying />
-      <NewDisney />
+      <ComingSoon />
       <Originals />
     </Container>
   );
@@ -45,11 +45,13 @@ const Container = styled.main`
   display: block;
   top: 70px;
   padding: 0 calc(3.5vw + 5px);
-  background-color: #121926;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 25, 38, 1) 12%,
+    rgba(0, 0, 0, 1) 100%
+  );
 
   &:after {
-    /* background: url("/images/home-background.png") center center / cover
-      no-repeat fixed; */
     content: "";
     position: absolute;
     inset: 0px;

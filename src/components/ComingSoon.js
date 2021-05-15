@@ -2,14 +2,14 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectNowPlaying } from "../features/movie/movieSlice";
+import { selectUpComing } from "../features/movie/movieSlice";
 import CONFIG from "../globals/config";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
-const NowPlaying = (props) => {
-  const movies = useSelector(selectNowPlaying);
+const ComingSoon = (props) => {
+  const movies = useSelector(selectUpComing);
   let settings = {
     dots: false,
     infinite: false,
@@ -19,10 +19,11 @@ const NowPlaying = (props) => {
     slidesToScroll: 8,
     pauseOnHover: true,
   };
+  console.log(movies);
 
   return (
     <Container>
-      <h4>Recomended for you</h4>
+      <h4>Coming Soon</h4>
       <Content {...settings}>
         {movies &&
           movies[0].map((movie, key) => (
@@ -76,8 +77,7 @@ const Content = styled(Slider)`
   }
 
   .slick-prev {
-    left: -73px;
-    width: calc(calc(100vw - 165px) / 20);
+    left: -65px;
     background: linear-gradient(
       to left,
       transparent,
@@ -90,8 +90,7 @@ const Content = styled(Slider)`
   }
 
   .slick-next {
-    right: -73px;
-    width: calc(calc(100vw - 165px) / 20);
+    right: -65px;
     background: linear-gradient(
       to right,
       transparent,
@@ -136,4 +135,4 @@ const Wrap = styled.div`
   }
 `;
 
-export default NowPlaying;
+export default ComingSoon;

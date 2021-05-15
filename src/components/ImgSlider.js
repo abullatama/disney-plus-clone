@@ -71,12 +71,22 @@ const Carousel = styled(Slider)`
     overflow: initial;
   }
 
+  .slick-arrow::before {
+    font-size: 45px;
+  }
+
   .slick-prev {
     left: -65px;
+    &::before {
+      content: "❮";
+    }
   }
 
   .slick-next {
     right: -65px;
+    &::before {
+      content: "❯";
+    }
   }
 `;
 
