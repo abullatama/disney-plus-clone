@@ -1,5 +1,4 @@
 import API_ENDPOINT from "../globals/api-endpoint";
-import CONFIG from "../globals/config";
 class TheMovieDbSource {
   static async nowPlayingMovies() {
     const nowPlaying = API_ENDPOINT.NOW_PLAYING;
@@ -16,7 +15,6 @@ class TheMovieDbSource {
           });
         });
       resultArr = [].concat.apply([], result); //merging an array of arrays
-      console.log(resultArr);
       return resultArr;
     } catch (error) {
       console.log(error);
@@ -35,14 +33,14 @@ class TheMovieDbSource {
         upComing[3],
       ])
         .then((response) => {
-          return Promise.all(response.map((values) => values.clone().json())); //cloning the body of json so that it can be read more than once
+          return Promise.all(response.map((values) => values.clone().json()));
         })
         .then((response) => {
           return response.map((res) => {
             return res.results;
           });
         });
-      resultArr = [].concat.apply([], result); //merging an array of arrays
+      resultArr = [].concat.apply([], result);
       console.log(resultArr);
       return resultArr;
     } catch (error) {
@@ -57,14 +55,14 @@ class TheMovieDbSource {
     try {
       const result = await Promise.all([popular[0], popular[1], popular[2]])
         .then((response) => {
-          return Promise.all(response.map((values) => values.clone().json())); //cloning the body of json so that it can be read more than once
+          return Promise.all(response.map((values) => values.clone().json()));
         })
         .then((response) => {
           return response.map((res) => {
             return res.results;
           });
         });
-      resultArr = [].concat.apply([], result); //merging an array of arrays
+      resultArr = [].concat.apply([], result);
       console.log(resultArr);
       return resultArr;
     } catch (error) {
@@ -79,14 +77,14 @@ class TheMovieDbSource {
     try {
       const result = await Promise.all([topRated[0], topRated[1], topRated[2]])
         .then((response) => {
-          return Promise.all(response.map((values) => values.clone().json())); //cloning the body of json so that it can be read more than once
+          return Promise.all(response.map((values) => values.clone().json()));
         })
         .then((response) => {
           return response.map((res) => {
             return res.results;
           });
         });
-      resultArr = [].concat.apply([], result); //merging an array of arrays
+      resultArr = [].concat.apply([], result);
       console.log(resultArr);
       return resultArr;
     } catch (error) {

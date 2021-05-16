@@ -19,20 +19,23 @@ const Home = (props) => {
   let popular = [];
   let topRated = [];
 
-  useEffect(async () => {
-    nowPlaying.push(await TheMovieDbSource.nowPlayingMovies());
-    upComing.push(await TheMovieDbSource.upcomingMovies());
-    popular.push(await TheMovieDbSource.popularMovies());
-    topRated.push(await TheMovieDbSource.topRatedMovies());
-    dispatch(
-      setMovies({
-        nowPlaying: nowPlaying,
-        upComing: upComing,
-        popular: popular,
-        topRated: topRated,
-      })
-    );
-  }, [userName]);
+  useEffect(
+    async function fetchData() {
+      nowPlaying.push(await TheMovieDbSource.nowPlayingMovies());
+      upComing.push(await TheMovieDbSource.upcomingMovies());
+      popular.push(await TheMovieDbSource.popularMovies());
+      topRated.push(await TheMovieDbSource.topRatedMovies());
+      dispatch(
+        setMovies({
+          nowPlaying: nowPlaying,
+          upComing: upComing,
+          popular: popular,
+          topRated: topRated,
+        })
+      );
+    },
+    [userName]
+  );
 
   return (
     <Container>
