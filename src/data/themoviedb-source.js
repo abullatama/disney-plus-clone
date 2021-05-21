@@ -41,7 +41,6 @@ class TheMovieDbSource {
           });
         });
       resultArr = [].concat.apply([], result);
-      console.log(resultArr);
       return resultArr;
     } catch (error) {
       console.log(error);
@@ -63,7 +62,6 @@ class TheMovieDbSource {
           });
         });
       resultArr = [].concat.apply([], result);
-      console.log(resultArr);
       return resultArr;
     } catch (error) {
       console.log(error);
@@ -85,7 +83,6 @@ class TheMovieDbSource {
           });
         });
       resultArr = [].concat.apply([], result);
-      console.log(resultArr);
       return resultArr;
     } catch (error) {
       console.log(error);

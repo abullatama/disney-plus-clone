@@ -56,10 +56,31 @@ const Header = (props) => {
     );
   };
 
+  const hamburger = document.querySelector(".btn-hamburger");
+  const subMenu = document.querySelector(".subMenu");
+  if (hamburger) {
+    hamburger.addEventListener("mouseenter", () => {
+      subMenu.classList.add("fade-in");
+    });
+    console.log("cok");
+  }
+
   return (
     <Nav>
+      {userName ? (
+        <Hamburger className="btn-hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+          <div className="subMenu">
+            <div className="iconGenres"></div>
+            <a href="#">Genres</a>
+          </div>
+        </Hamburger>
+      ) : null}
+
       <Logo>
-        <img src="/images/logo.svg" alt="Disney+" />
+        <img src="disney-hotstar-logo-dark.svg" alt="Disney+" />
       </Logo>
 
       {!userName ? (
@@ -67,21 +88,27 @@ const Header = (props) => {
       ) : (
         <>
           <NavMenu>
-            <a>
-              <img src="/images/series-icon.svg" alt="SERIES" />
+            <a href="#">
               <span>Series</span>
+              <div className="nav-submenu">
+                <a href="#">Hotstar Special</a>
+              </div>
             </a>
-            <a>
-              <img src="/images/movie-icon.svg" alt="MOVIES" />
+            <a href="#">
               <span>Movies</span>
+              <div className="nav-submenu">
+                <a href="#">Indonesian</a>
+                <a href="#">English</a>
+              </div>
             </a>
-            <a>
-              <img src="/images/watchlist-icon.svg" alt="WATCHLIST" />
-              <span>Watchlist</span>
+            <a href="#">
+              <span>Disney+</span>
             </a>
-            <a>
-              <img src="/images/original-icon.svg" alt="ORIGINALS" />
-              <span>Originals</span>
+            <a href="#">
+              <span>Local</span>
+            </a>
+            <a href="#">
+              <span className="iconKids"></span>
             </a>
           </NavMenu>
           <Search>
@@ -118,14 +145,15 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 0 calc(3.5vw + 5px);
-  letter-spacing: 16px;
+  padding-top: 6px;
   z-index: 3;
 `;
 
 const Logo = styled.a`
   padding: 0;
-  width: 80px;
-  margin-top: 4px;
+  width: 115px;
+  height: 45px;
+  padding-bottom: 10px;
   max-height: 70px;
   font-size: 0;
   display: inline-block;
@@ -133,6 +161,65 @@ const Logo = styled.a`
   img {
     display: block;
     width: 100%;
+  }
+`;
+
+const Hamburger = styled.div`
+  position: relative;
+  padding: 20px;
+  margin-left: -10px;
+  cursor: pointer;
+  span {
+    width: 18px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.6);
+    display: block;
+
+    &:nth-child(2) {
+      margin: 3px 0;
+    }
+  }
+
+  &:hover {
+    .subMenu {
+      animation: fade-in 400ms ease-in-out forwards;
+    }
+  }
+
+  .subMenu {
+    display: flex;
+    opacity: 1;
+    align-items: center;
+    position: absolute;
+    border-radius: 2px;
+    margin: 20px 0;
+    background-color: #192133;
+    padding: 10px 20px;
+    animation: fade-out 1s ease-in-out forwards;
+
+    .iconGenres {
+      background: url(images/my-icons.svg) no-repeat;
+      width: 22px;
+      height: 22px;
+      margin-right: 20px;
+      background-position: -272px -34px;
+    }
+
+    a {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.8);
+      margin: 5px 0;
+    }
+
+    &:hover {
+      background-color: #0c111b;
+      .iconGenres {
+        background-position: -272px -0px;
+      }
+      a {
+        color: white;
+      }
+    }
   }
 `;
 
@@ -146,13 +233,13 @@ const NavMenu = styled.div`
   padding: 0px;
   position: relative;
   margin-right: auto;
-  margin-left: 25px;
 
   a {
     display: flex;
     align-items: center;
     padding: 0 12px;
     cursor: pointer;
+    padding: 20px 15px 20px;
 
     img {
       height: 20px;
@@ -162,14 +249,19 @@ const NavMenu = styled.div`
     }
 
     span {
-      color: rgb(249, 249, 249);
-      font-size: 13px;
-      letter-spacing: 1.42px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 16px;
+      letter-spacing: 0.42px;
       line-height: 1.08;
       padding: 2px 0px;
       white-space: nowrap;
       position: relative;
-      margin-left: 8px;
+
+      &.iconKids {
+        width: 40px;
+        height: 15px;
+        background: url(/images/icon-kids.svg) no-repeat;
+      }
 
       &:before {
         background-color: rgb(249, 249, 249);
@@ -189,6 +281,62 @@ const NavMenu = styled.div`
       }
     }
 
+    &:first-child {
+      .nav-submenu {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        opacity: 0;
+        border-radius: 4px;
+        background-color: #192133;
+
+        a {
+          font-size: 14px;
+          padding: 10px 20px;
+        }
+
+        &:hover {
+          background-color: #0c111b;
+          a {
+            color: white;
+          }
+        }
+      }
+
+      &:hover {
+        .nav-submenu {
+          animation: slide-up 400ms ease-in-out forwards;
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      .nav-submenu {
+        position: absolute;
+        top: 50px;
+        left: 72px;
+        opacity: 0;
+        border-radius: 4px;
+        background-color: #192133;
+
+        a {
+          font-size: 14px;
+          padding: 10px 20px;
+          transition: 0.3s;
+          &:hover {
+            background-color: #0c111b;
+            color: white;
+          }
+        }
+      }
+
+      &:hover {
+        .nav-submenu {
+          animation: slide-up 400ms ease-in-out forwards;
+        }
+      }
+    }
+
     &:hover {
       span:before {
         transform: scaleX(1);
@@ -197,23 +345,28 @@ const NavMenu = styled.div`
       }
     }
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1000px) {
     display: none;
   }
 `;
 
 const Search = styled.div`
+  padding-right: 40px;
+
   input {
     position: relative;
     width: 240px;
     height: 32px;
     font-size: 16px;
     transition: width 0.2s ease-in-out;
-    margin-right: 20px;
     border: none;
     color: rgba(255, 255, 255, 0.6);
     background: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+
+    &::placeholder {
+      color: rgba(193, 196, 199, 1);
+    }
 
     &:focus {
       width: 360px;
@@ -221,11 +374,16 @@ const Search = styled.div`
       outline: none;
     }
   }
+
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
+
   .searchIcon {
     position: absolute;
     width: 16px;
     top: 25px;
-    right: 105px;
+    right: 145px;
     img {
       width: 100%;
     }

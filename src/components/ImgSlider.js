@@ -5,7 +5,7 @@ import Slider from "react-slick";
 
 const ImgSlider = (props) => {
   let settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -16,25 +16,45 @@ const ImgSlider = (props) => {
     <Carousel {...settings}>
       <Wrap>
         <a>
-          <img src="/images/slider-badging.jpg" alt="" />
+          <div className="description"></div>
+          <div className="image">
+            <img src="/images/falcon.png" alt="" />
+          </div>
         </a>
       </Wrap>
 
       <Wrap>
         <a>
-          <img src="/images/slider-scale.jpg" alt="" />
+          <div className="description"></div>
+          <div className="image">
+            <img src="/images/walking-dead.png" alt="" />
+          </div>
         </a>
       </Wrap>
 
       <Wrap>
         <a>
-          <img src="/images/slider-badag.jpg" alt="" />
+          <div className="description"></div>
+          <div className="image">
+            <img src="/images/greys-anatomy.png" alt="" />
+          </div>
         </a>
       </Wrap>
 
       <Wrap>
         <a>
-          <img src="/images/slider-scales.jpg" alt="" />
+          <div className="description"></div>
+          <div className="image">
+            <img src="/images/agents-of-shield.png" alt="" />
+          </div>
+        </a>
+      </Wrap>
+      <Wrap>
+        <a>
+          <div className="description"></div>
+          <div className="image">
+            <img src="/images/criminal-minds.png" alt="" />
+          </div>
         </a>
       </Wrap>
     </Carousel>
@@ -42,8 +62,6 @@ const ImgSlider = (props) => {
 };
 
 const Carousel = styled(Slider)`
-  margin-top: 20px;
-
   & > button {
     opacity: 0;
     height: 100%;
@@ -92,20 +110,37 @@ const Carousel = styled(Slider)`
 
 const Wrap = styled.div`
   cursor: pointer;
-  position: relative;
 
   a {
-    box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px,
-      rgb(0 0 0 / 73%) 0px 16px 10px -10px;
-    cursor: pointer;
-    display: block;
-    position: relative;
+    display: grid;
+    grid-template-columns: 0.78fr auto;
     padding: 0 10px;
+    cursor: pointer;
+    @media screen and (min-width: 870px) {
+      height: 400px;
+    }
 
-    img {
-      border-radius: 2px;
-      width: 100%;
-      height: 100%;
+    .description {
+      border-radius: 5px 0px 0px 5px;
+      background-color: #030b17;
+    }
+
+    .image {
+      @media screen and (min-width: 800px) {
+        &:before {
+          content: "";
+          position: absolute;
+          top: -4px;
+          width: 200px;
+          height: 100%;
+          background: linear-gradient(to right, #030b17, rgba(0, 0, 0, 0));
+        }
+      }
+      img {
+        border-radius: 5px;
+        height: 100%;
+        width: 100%;
+      }
     }
 
     &:hover {

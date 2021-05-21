@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
 html {
   scroll-behavior: smooth;
 }
@@ -10,7 +12,7 @@ body {
   background-color: #040714;
   color: #f9f9f9;
 
-  font-family: Avenir-Roman, sans-serif;
+  font-family: "Roboto", sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -33,5 +35,60 @@ a {
 @media only screen and (max-width: 479px) {
   body {
     font-size: 14px;
+  }
+}
+
+/* ANIMATION */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    top: 56px;
+  }
+  to {
+    opacity: 1;
+    top: 50px;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    height: 0;
+  }
+  to {
+    opacity: 1;
+    height: 100%;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+    height: 100%;
+  }
+  20% {
+    opacity: 1;
+    height: 100%;
+  }
+  40% {
+    opacity: 1;
+    height: 100%;
+  }
+  60% {
+    opacity: 1;
+    height: 100%;
+  }
+  80% {
+    opacity: 1;
+    height: 0;
+  }
+
+  80% {
+    opacity: 0;
+    height: 0;
+  }
+  100% {
+    opacity: 0;
+    height: 0;
   }
 }

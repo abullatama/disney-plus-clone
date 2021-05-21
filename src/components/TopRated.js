@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -17,12 +18,43 @@ const TopRated = (props) => {
     slidesToShow: 8,
     slidesToScroll: 8,
     pauseOnHover: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 5,
+          initialSlide: 0,
+          infinite: false,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          initialSlide: 0,
+        },
+      },
+    ],
   };
+
+  useEffect(() => {
+    const slider = document.querySelector(".topRatedSlider");
+    const childContent = slider.querySelector(".slick-list");
+    const track = childContent.querySelector(".slick-track");
+    if (track) {
+      setTimeout(() => {
+        track.style.transform = "translate3d(0px, 0px, 0px)";
+      });
+    }
+  });
 
   return (
     <Container>
       <h4>Top Rated Movies</h4>
-      <Content {...settings}>
+      <Content {...settings} className="topRatedSlider">
         {movies &&
           movies[0].map((movie, key) => (
             <Wrap key={key}>

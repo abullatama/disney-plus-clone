@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -12,17 +13,43 @@ const NowPlaying = (props) => {
   let settings = {
     dots: false,
     infinite: false,
-    speed: 1000,
-    swipeToSlide: false,
+    speed: 800,
     slidesToShow: 8,
     slidesToScroll: 8,
-    pauseOnHover: true,
+    swipeToSlide: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 5,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
+
+  useEffect(() => {
+    const slider = document.querySelector(".nowPlayingSlider");
+    const childContent = slider.querySelector(".slick-list");
+    const track = childContent.querySelector(".slick-track");
+    if (track) {
+      setTimeout(() => {
+        track.style.transform = "translate3d(0px, 0px, 0px)";
+      });
+    }
+  });
 
   return (
     <Container>
       <h4>Recomended for you</h4>
-      <Content {...settings}>
+      <Content {...settings} className="nowPlayingSlider">
         {movies &&
           movies[0].map((movie, key) => (
             <Wrap key={key}>
@@ -64,6 +91,7 @@ const Content = styled(Slider)`
   }
 
   .slick-list {
+    position: relative;
     overflow: initial;
   }
 

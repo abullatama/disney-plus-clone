@@ -4,7 +4,7 @@ const Footer = (props) => {
   return (
     <MyFooter>
       <Container>
-        <Grid>
+        <Grid className="footer__left">
           <Link>
             <a href="#">About Disney+ Hotstar</a>
             <a href="#">Terms Of Use</a>
@@ -18,28 +18,30 @@ const Footer = (props) => {
             </p>
           </Copyright>
         </Grid>
-        <Social>
-          <p>Connect with us</p>
-          <div class="social__item">
-            <a href="#" class="fb">
-              &nbsp;
-            </a>
-            <a href="#" class="tw">
-              &nbsp;
-            </a>
-          </div>
-        </Social>
-        <Store>
-          <p>Disney+ Hotstar App</p>
-          <div class="store__item">
-            <a href="#" class="playstore">
-              &nbsp;
-            </a>
-            <a href="#" class="applestore">
-              &nbsp;
-            </a>
-          </div>
-        </Store>
+        <Grid className="footer__right">
+          <Social>
+            <p>Connect with us</p>
+            <div className="social__item">
+              <a href="#" className="fb">
+                &nbsp;
+              </a>
+              <a href="#" className="tw">
+                &nbsp;
+              </a>
+            </div>
+          </Social>
+          <Store>
+            <p>Disney+ Hotstar App</p>
+            <div className="store__item">
+              <a href="#" className="playstore">
+                &nbsp;
+              </a>
+              <a href="#" className="applestore">
+                &nbsp;
+              </a>
+            </div>
+          </Store>
+        </Grid>
       </Container>
     </MyFooter>
   );
@@ -52,15 +54,23 @@ const MyFooter = styled.footer`
 `;
 
 const Container = styled.div`
-  display: grid;
-  grid-template-columns: 2fr 1fr auto;
+  @media screen and (min-width: 870px) {
+    display: grid;
+    grid-template-columns: 2fr 2fr auto;
+  }
   padding: 0 calc(3.5vw + 5px);
   padding-top: 34px;
   padding-bottom: 24px;
 `;
 
 const Grid = styled.div`
-  grid-row: 1 / span 4;
+  &.footer__left {
+    grid-row: 1 / span 4;
+  }
+  &.footer__right {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 const Link = styled.div`
@@ -68,6 +78,7 @@ const Link = styled.div`
     font-size: 14px;
     display: inline-block;
     padding: 0 20px 0 0;
+    margin-bottom: 10px;
     color: rgba(255, 255, 255, 0.8);
     transition: 0.2s ease-in-out;
     &:hover {
@@ -82,17 +93,24 @@ const Copyright = styled.div`
     font-size: 12px;
     line-height: 1.8;
     margin: 0;
+    margin-bottom: 20px;
     color: #dadada;
   }
 `;
 const Social = styled.div`
-  justify-self: end;
+  @media screen and (min-width: 870px) {
+    justify-self: end;
+  }
   p {
+    display: inline-block;
     font-size: 14px;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.6);
     margin: 0;
     padding-bottom: 7px;
+  }
+  .social__item {
+    width: 100%;
   }
   a {
     height: 40px;
@@ -121,9 +139,12 @@ const Social = styled.div`
   }
 `;
 const Store = styled.div`
-  padding: 0 0 24px 60px;
-  justify-self: end;
+  @media screen and (min-width: 870px) {
+    padding: 0 0 24px 60px;
+    justify-self: end;
+  }
   p {
+    display: inline-block;
     font-size: 14px;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.6);
@@ -135,6 +156,7 @@ const Store = styled.div`
     width: 135px;
     display: inline-block;
     margin-right: 5px;
+    margin-bottom: 5px;
     background: url("67764ffe0b6b18e06d60049a00c86335.svg");
     outline: 0;
     color: #1f80e0;

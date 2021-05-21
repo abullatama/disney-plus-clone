@@ -41,7 +41,6 @@ const Viewers = (props) => {
 };
 
 const Container = styled.div`
-  margin-top: 30px;
   padding: 30px 0px 26px;
   display: grid;
   grid-gap: 25px;
@@ -49,7 +48,7 @@ const Container = styled.div`
   grid-template-columns: repeat(5, minmax(0, 1fr));
 
   @media (max-width: 768px) {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 `;
 
@@ -63,6 +62,12 @@ const Wrap = styled.div`
   position: relative;
   transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
   border: 3px solid rgba(249, 249, 249, 0.1);
+
+  @media (max-width: 768px) {
+    :last-child {
+      display: none;
+    }
+  }
 
   img {
     inset: 0px;
