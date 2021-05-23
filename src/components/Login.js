@@ -21,6 +21,9 @@ const Login = (props) => {
 };
 
 const Container = styled.section`
+  position: relative;
+  top: 70px;
+  bottom: 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -29,17 +32,15 @@ const Container = styled.section`
 `;
 
 const Content = styled.div`
-  margin-bottom: 10vw;
   width: 100%;
+  height: 100%;
   position: relative;
-  min-height: 100vh;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   padding: 80px 40px;
-  height: 100%;
 `;
 
 const BgImage = styled.div`

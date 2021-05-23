@@ -56,23 +56,27 @@ const Header = (props) => {
     );
   };
 
-  const hamburger = document.querySelector(".btn-hamburger");
-  const subMenu = document.querySelector(".subMenu");
-  if (hamburger) {
-    hamburger.addEventListener("mouseenter", () => {
-      subMenu.classList.add("fade-in");
-    });
-    console.log("cok");
-  }
+  const toggleNavMobile = () => {
+    const hamburger = document.querySelector(".btn-hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+    if (hamburger) {
+      console.log("cok");
+      if (navMenu.classList.contains("mobile-nav")) {
+        navMenu.classList.remove("mobile-nav");
+      } else {
+        navMenu.classList.add("mobile-nav");
+      }
+    }
+  };
 
   return (
     <Nav>
       {userName ? (
-        <Hamburger className="btn-hamburger">
+        <Hamburger className="btn-hamburger" onClick={toggleNavMobile}>
           <span></span>
           <span></span>
           <span></span>
-          <div className="subMenu">
+          <div className="subMenu desktop">
             <div className="iconGenres"></div>
             <a href="#">Genres</a>
           </div>
@@ -87,7 +91,7 @@ const Header = (props) => {
         <Login onClick={handleAuth}>Login</Login>
       ) : (
         <>
-          <NavMenu>
+          <NavMenu className="nav-menu">
             <a href="#">
               <span>Series</span>
               <div className="nav-submenu">
@@ -107,8 +111,15 @@ const Header = (props) => {
             <a href="#">
               <span>Local</span>
             </a>
+            <a href="#" className="mobile">
+              <span>Genres</span>
+            </a>
             <a href="#">
               <span className="iconKids"></span>
+            </a>
+            <a href="#" className="search-mobile">
+              <img src="/images/search-icon.svg" alt="SEARCH" />
+              <span>Search</span>
             </a>
           </NavMenu>
           <Search>
@@ -187,7 +198,7 @@ const Hamburger = styled.div`
   }
 
   .subMenu {
-    display: flex;
+    display: none;
     opacity: 1;
     align-items: center;
     position: absolute;
@@ -221,12 +232,16 @@ const Hamburger = styled.div`
       }
     }
   }
+  @media screen and (min-width: 1000px) {
+    .desktop {
+      display: flex;
+    }
+  }
 `;
 
 const NavMenu = styled.div`
   align-items: center;
   display: flex;
-  flex-flow: row nowrap;
   height: 100%;
   justify-content: flex-end;
   margin: 0px;
@@ -240,13 +255,6 @@ const NavMenu = styled.div`
     padding: 0 12px;
     cursor: pointer;
     padding: 20px 15px 20px;
-
-    img {
-      height: 20px;
-      min-width: 20px;
-      width: 20px;
-      z-index: auto;
-    }
 
     span {
       color: rgba(255, 255, 255, 0.8);
@@ -345,8 +353,73 @@ const NavMenu = styled.div`
       }
     }
   }
+
+  .search-mobile {
+    display: flex;
+    justify-content: center;
+    img {
+      width: 18px;
+      right: 145px;
+    }
+
+    @media screen and (min-width: 1000px) {
+      display: none;
+    }
+  }
+
+  &.mobile-nav {
+    @media screen and (max-width: 1000px) {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
   @media screen and (max-width: 1000px) {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 77px;
+    left: 10px;
+    height: auto;
+    flex-direction: column;
+    background-color: #192133;
+    transition-duration: 0.5s;
+
+    a {
+      text-align: center;
+      width: 200px;
+
+      &:not(:nth-child(6), :nth-child(7)) {
+        display: inline-block;
+      }
+
+      &:nth-child(6) {
+        justify-content: center;
+      }
+
+      &:first-child {
+        .nav-submenu {
+          top: 12px;
+          left: 203px;
+        }
+      }
+
+      &:nth-child(2) {
+        .nav-submenu {
+          left: 203px;
+        }
+      }
+
+      &:hover {
+        background-color: #0c111b;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    .mobile {
+      display: none;
+    }
   }
 `;
 
@@ -415,15 +488,17 @@ const DropDown = styled.div`
   position: absolute;
   top: 48px;
   right: 0px;
-  background: rgb(19, 19, 19);
-  border: 1px solid rgba(151, 151, 151, 0.34);
+  background-color: #192133;
   border-radius: 4px;
-  box-shadow: rgb(0 0 0 / 50%) 0px 0px 18px 0px;
-  padding: 10px;
+  padding: 10px 20px;
   font-size: 14px;
-  letter-spacing: 3px;
   width: 100px;
   opacity: 0;
+  color: rgba(255, 255, 255, 0.8);
+
+  &:hover {
+    background-color: #0c111b;
+  }
 `;
 
 const SignOut = styled.div`

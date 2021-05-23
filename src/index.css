@@ -38,15 +38,25 @@ a {
   }
 }
 
+@media only screen and (min-width: 1000px) {
+}
+
 /* ANIMATION */
 @keyframes slide-up {
   from {
     opacity: 0;
-    top: 56px;
   }
   to {
     opacity: 1;
-    top: 50px;
+  }
+}
+
+@keyframes fade-in-nav {
+  from {
+    visibility: hidden;
+  }
+  to {
+    visibility: visible;
   }
 }
 
