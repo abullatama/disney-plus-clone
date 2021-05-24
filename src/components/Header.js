@@ -60,7 +60,6 @@ const Header = (props) => {
     const hamburger = document.querySelector(".btn-hamburger");
     const navMenu = document.querySelector(".nav-menu");
     if (hamburger) {
-      console.log("cok");
       if (navMenu.classList.contains("mobile-nav")) {
         navMenu.classList.remove("mobile-nav");
       } else {
