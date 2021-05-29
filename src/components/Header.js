@@ -454,7 +454,7 @@ const Search = styled.div`
   .searchIcon {
     position: absolute;
     width: 16px;
-    top: 25px;
+    top: 30px;
     right: 145px;
     img {
       width: 100%;

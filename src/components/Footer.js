@@ -49,8 +49,12 @@ const Footer = (props) => {
 
 const MyFooter = styled.footer`
   position: relative;
-  top: 70px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
   background-color: #0c111b;
+  overflow: hidden;
 `;
 
 const Container = styled.div`

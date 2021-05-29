@@ -234,7 +234,7 @@ const Wrap = styled.div`
         .description {
           font-size: 16px;
           padding-top: 10px;
-          padding-right: 135px;
+          padding-right: 40px;
           line-height: 28px;
           color: rgba(255, 255, 255, 0.8);
         }

@@ -45,8 +45,9 @@ const API_ENDPOINT = {
       `${CONFIG.BASE_URL}movie/top_rated?api_key=${CONFIG.KEY}&language=${CONFIG.DEFAULT_LANGUAGE}&page=3`
     ),
   ],
-
   DETAIL: (id) => `${CONFIG.BASE_URL}movie/${id}?api_key=${CONFIG.KEY}`,
+  CREDITS: (id) =>
+    `${CONFIG.BASE_URL}movie/${id}/credits?api_key=${CONFIG.KEY}`,
 };
 
 export default API_ENDPOINT;

@@ -16,7 +16,7 @@ const NowPlaying = (props) => {
     speed: 800,
     slidesToShow: 8,
     slidesToScroll: 8,
-    swipeToSlide: true,
+    swipeToSlide: false,
     responsive: [
       {
         breakpoint: 1024,
