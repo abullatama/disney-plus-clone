@@ -1,5 +1,5 @@
 # Disney+ Hotstar Clone
-# [LIVE DEMO](disneyplus-clone-63fe4.web.app)
+# [LIVE DEMO](https://disneyplus-clone-63fe4.web.app/)
 
 # Description
 Build Disney+ with React JS (Firebase + Styled Components + Redux) 
