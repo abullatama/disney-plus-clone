@@ -1,3 +1,9 @@
+# Disney+ Hotstar Clone
+# [LIVE DEMO](disneyplus-clone-63fe4.web.app)
+
+# Description
+Build Disney+ with React JS (Firebase + Styled Components + Redux) 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
